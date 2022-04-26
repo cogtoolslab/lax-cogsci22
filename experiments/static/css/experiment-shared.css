@@ -1,0 +1,250 @@
+.row-prompt {
+    margin: 0em 0em;
+    text-align: left;
+}
+
+.demo-instruction {
+    text-align: left;
+    display: block;
+    color: red;
+}
+
+/* .input-row{
+    padding-right: 10px;
+    border: 3px solid #555;
+    border-radius: 3px;
+    margin: 0% 2%;
+    width: 45%;
+} */
+
+.input-row {
+    padding: 0px 8px;
+    border: 3px solid #555;
+    border-radius: 3px;
+    margin: 0% 1%;
+    width: 48%;
+}
+
+#label-rows{
+    margin: 0;
+    padding-top: 1em;
+}
+
+div#jspsych-category-labels-container {
+    padding-top: 20px;
+}
+
+#jspsych-category-labels-table-row.td{
+    border-radius: 6px;
+}
+
+.familiarization-img, .upcoming-img {
+    border: 3px solid #555;
+    border-radius: 3px;
+}
+
+td {
+    border: none;
+}
+
+#instruction-container{
+    margin: 0px;
+    max-height: 560px;
+    overflow-y: auto;
+}
+
+.question-row{
+    margin: 0px 0px;
+}
+
+
+/* reconstruction */
+
+.instruction-container {
+    text-align: left !important;
+    line-height: normal !important;
+    font-size: 15 !important;
+    border: 3px solid #555;
+    counter-reset: n;
+    margin: 10px;
+    margin-bottom: 0px;
+    padding: 5px;
+    overflow-y: scroll;
+    max-width: 400px;
+    height: 464px;
+    
+  }
+  
+.instruction-controller {
+  display: flex;
+  border-style: solid;
+  border-top-style: none;
+  margin: 10px;
+  margin-top: 0px;
+  padding: 15px;
+  max-width: 400px;
+  max-height: 100px;
+}
+  
+.instruction-controller > button {
+  flex: 1 1 auto;
+}
+
+.instruction-wrapper {
+  display: flex;
+  margin-bottom: 5px;
+}
+  
+.instruction {
+  width: 100%;
+  margin: 0px auto;
+  /* margin-bottom: 10px; */
+  border-style: solid;
+  border-width: 3px;
+  border-color: lightgrey;
+  color: lightgrey;
+}
+  
+.instruction:hover {
+  cursor:pointer;
+  
+  border-width: 3px;
+  border-color: black;
+  color: black;
+}
+  
+.instruction.selected {
+  border-color: black;
+  color: black;
+}
+  
+.instruction-inner {
+  display: inline-flex;
+}
+
+.instruction-step {
+  margin: auto 0;
+}
+
+.instruction-step::before {
+  counter-increment: n;
+  font-weight: bold;
+  text-align: center;
+  content: counter(n)"";
+  margin: auto 4px;
+  margin-right: 8px;
+}
+
+.instruction-part {
+  font-weight: bold;
+  background: #e0e0e0;
+  border: #555 solid 1px;
+  border-radius: 7px;
+  width: 65px;
+  display: inline-block;
+  text-align: center;
+}
+  
+.instruction .instruction-text {
+  padding: 6px;
+  -webkit-filter: blur(3px);
+  -moz-filter: blur(3px);
+  -o-filter: blur(3px);
+  -ms-filter: blur(3px);
+  filter: blur(3px);
+}
+  
+.instruction.selected .instruction-text {
+  -webkit-filter: none;
+  -moz-filter: none;
+  -o-filter: none;
+  -ms-filter: none;
+  filter: none;
+}
+
+p.where-text{
+  margin-bottom: 0px;
+}
+
+kbd {
+  background-color: #eee;
+  border-radius: 3px;
+  border: 1px solid #b4b4b4;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, .2), 0 2px 0 0 rgba(255, 255, 255, .7) inset;
+  color: #333;
+  display: inline-block;
+  font-size: .85em;
+  font-weight: 700;
+  line-height: 1;
+  padding: 2px 4px;
+  white-space: nowrap;
+ }
+
+.instruction-controller kbd.down {
+  box-shadow: none;
+}
+
+.p5Canvas{
+  border: 3px solid #555;
+  margin: 10px;
+}
+
+.btn {
+    margin-right: 15px;
+    border: solid 3px #1c363e;
+    background-color: rgb(146, 220, 222);
+    border-radius: 0px;
+    font-family: 'Francois One', sans-serif;
+    font-size: 24px;
+    padding: 6px 10px;
+}
+
+.btn:hover {
+    background-color: rgb(210, 241, 243);
+}
+
+.btn:active {
+    background-color: rgb(110, 168, 173);
+}
+
+#jspsych-progressbar-container{
+  margin-bottom: 5px;
+}
+
+.alert{
+  margin-bottom: 5px;
+  padding: 10px;
+}
+
+.controls {
+  text-align: left;
+  max-height: 600px;
+  margin-top: 10px;
+}
+
+p.what-text {
+  user-select: none; /* supported by Chrome and Opera */
+ -webkit-user-select: none; /* Safari */
+ -khtml-user-select: none; /* Konqueror HTML */
+ -moz-user-select: none; /* Firefox */
+ -ms-user-select: none; /* Internet Explorer/Edge */
+}
+p.where-text {
+  user-select: none; /* supported by Chrome and Opera */
+ -webkit-user-select: none; /* Safari */
+ -khtml-user-select: none; /* Konqueror HTML */
+ -moz-user-select: none; /* Firefox */
+ -ms-user-select: none; /* Internet Explorer/Edge */
+}
+
+.jspsych-content > * {
+  user-select: none; /* supported by Chrome and Opera */
+ -webkit-user-select: none; /* Safari */
+ -khtml-user-select: none; /* Konqueror HTML */
+ -moz-user-select: none; /* Firefox */
+ -ms-user-select: none; /* Internet Explorer/Edge */
+}
+
+.controls > ul {
+  padding-left: 20px;
+}

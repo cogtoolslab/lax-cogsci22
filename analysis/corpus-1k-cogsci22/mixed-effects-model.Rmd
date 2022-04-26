@@ -1,0 +1,130 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+# Imports
+
+```{r}
+library(tidyverse)
+library(lme4)
+library(lmerTest)
+library(ggthemes)
+```
+
+# Preprocess
+
+1. Pull out relevant columns
+2. z-score word counts within participant
+3. 
+
+```{r}
+d.raw <- read_csv('../results/csv/lax_corpus_1k_trials_program_length.csv') %>%
+  select(gameID, stimId, domain, subdomain, what_word_sum, where_word_sum, program_length, dsl) %>%
+  mutate(combined_word_sum = what_word_sum + where_word_sum) %>%
+  mutate(dsl_numeric = case_when(dsl == 'dsl_0_base' ~ -1.5, 
+                                 dsl == 'dsl_1_low'  ~ -0.5, 
+                                 dsl == 'dsl_2_mid'  ~  0.5, 
+                                 dsl == 'dsl_3_high' ~  1.5))
+
+d <- d.raw %>%
+  group_by(gameID) %>%
+  mutate(combined_word_sum = scale(combined_word_sum),
+         what_word_sum = scale(what_word_sum),
+         combined_word_sum = ifelse(is.na(combined_word_sum), 0, combined_word_sum),
+         what_word_sum = ifelse(is.na(what_word_sum), 0, what_word_sum)) %>%
+  group_by(subdomain, dsl) %>%
+  mutate(program_length = scale(program_length)) %>%
+  ungroup() %>%
+  mutate(subdomain = fct_relevel(subdomain, 'nuts-bolts', 'furniture', 'wheels', 'dials',
+                                 'bridge', 'castle', 'city', 'house'))
+```
+
+# Make aggregated figure showing dsls
+
+```{r}
+d %>% 
+  ggplot(aes(x = program_length, y = combined_word_sum, color = dsl)) +
+  geom_jitter(alpha = 0.5, width = 0) +
+  geom_smooth(method = 'lm', formula = 'y ~ poly(x, 2)', color = 'black', se = F) +
+  theme_few() +
+  labs(y = '(z-scored) description length', x = '(z-scored) DSL length') +
+  facet_wrap(~ dsl) +
+  scale_color_manual(values = c('#009BCD', '#447E6D', '#FFA300', '#E19B92')) +
+  theme(aspect.ratio = 1, legend.position = 'none') 
+```
+
+# Make z-scored version of Fig. 3B
+
+```{r}
+d %>%
+  mutate(color_id = case_when(subdomain %in% c('nuts-bolts', 'bridge') ~ 'blue',
+                              subdomain %in% c('wheels', 'city') ~ 'orange',
+                              subdomain %in% c('dials', 'house') ~ 'green',
+                              subdomain %in% c('furniture', 'castle') ~ 'red')) %>%
+  mutate(across(subdomain, factor, levels=c("nuts-bolts","wheels","dials","furniture","bridge","city","house","castle"))) %>%
+  ggplot(aes(x = base_program_length, y = combined_word_sum, color = color_id)) +
+    geom_jitter(alpha = 0.5, width = .5) +
+    geom_smooth(method = 'lm', formula = 'y ~ poly(x, 2)',  se = F) +
+    facet_wrap(~ subdomain, nrow = 2, scales = 'free') +
+    theme_few() +
+    labs(y = 'normalized linguistic description length', x = 'normalized program description length (base library)') +
+    scale_color_manual(values = c('#009BCD', '#447E6D', '#FFA300', '#E19B92')) +
+    theme(aspect.ratio = 1, legend.position = 'none') 
+ggsave('./corpus/language_program_lengths.pdf')
+```
+
+# Run one 'omnibus' lmer model to rule them all
+
+```{r}
+m_all1 <- lmer(what_word_sum ~ subdomain + dsl_numeric * poly(program_length, 1) 
+                               + (1 | gameID),
+               contrasts = list(subdomain = contr.sum(8)),
+               data = d.raw)
+summary(m_all1)
+```
+
+```{r}
+m_all2 <- lmer(what_word_sum ~ subdomain + poly(base_program_length, 2) 
+                              + (1 + poly(base_program_length, 2) || gameID),
+               contrasts = list(subdomain = contr.sum(8)),
+               data = d.raw)
+
+anova(m_all1, m_all2)
+summary(m_all2)
+```
+
+```{r}
+m_drawing1 <- d %>%
+  filter(domain == 'drawing') %>%
+  lmer(what_word_sum ~ subdomain * poly(base_program_length, 1) 
+           + (1 | gameID) ,
+       data = .)
+summary(m_drawing1)
+
+m_drawing2 <- d %>%
+  filter(domain == 'drawing') %>%
+  lmer(what_word_sum ~ subdomain * poly(base_program_length, 2) 
+           + (1 | gameID),
+       data = .)
+
+anova(m_drawing1, m_drawing2)
+```
+
+```{r}
+m_structures1 <- d %>%
+  filter(subdomain == 'bridge') %>%
+  lmer(what_word_sum ~ poly(base_program_length, 1) 
+           + (1 | gameID) ,
+#           + (1 | subdomain),
+       data = .)
+
+m_structures2 <- d %>%
+  filter(subdomain == 'bridge') %>%
+  lmer(what_word_sum ~ poly(base_program_length, 2) 
+           + (1 | gameID) ,
+           #+ (1 | subdomain),
+       data = .)
+
+anova(m_structures1, m_structures2)
+```

@@ -1,0 +1,53 @@
+---
+title: "LAX Corpus Statistics, CogSci 2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(message = FALSE, warning = FALSE)
+library(tidyverse)
+library(lme4)
+# library(arm)
+# library(xtable)
+library(lmerTest)
+library(tidyboot)
+```
+
+## R Markdown
+
+```{r }
+df_trial = read.csv('../../results/csv/lax_corpus_1k_trials_cogsci22.csv')
+```
+
+```{r}
+m1 = lmer(data = df_trial, n_steps ~ domain + (1 | subdomain) + (1 | gameID) )
+m2 = lmer(data = df_trial, n_steps ~ domain + trial_num + (1 | subdomain) + (1 | gameID) )
+m3 = lmer(data = df_trial, n_steps ~ domain*trial_num + (1 | subdomain) + (1 | gameID) )
+anova(m1,m2,m3)
+summary(m3)
+```
+
+```{r}
+m1 = lmer(data = df_trial, char_sum ~ domain + (1 | subdomain) + (1 | gameID) )
+m2 = lmer(data = df_trial, char_sum ~ domain + trial_num + (1 | subdomain) + (1 | gameID) )
+m3 = lmer(data = df_trial, char_sum ~ domain*trial_num + (1 | subdomain) + (1 | gameID) )
+anova(m1,m2,m3)
+summary(m3)
+```
+
+```{r}
+m1 = lmer(data = df_trial, n_whats_filtered ~ domain + (1 | subdomain) + (1 | gameID) )
+m2 = lmer(data = df_trial, n_whats_filtered ~ domain + trial_num + (1 | subdomain) + (1 | gameID) )
+m3 = lmer(data = df_trial, n_whats_filtered ~ domain*trial_num + (1 | subdomain) + (1 | gameID) )
+anova(m1,m2,m3)
+summary(m3)
+```
+
+
+```{r}
+m1 = lmer(data = df_trial, what_word_sum ~ domain + (1 | subdomain) + (1 | gameID) )
+m2 = lmer(data = df_trial, what_word_sum ~ domain + trial_num + (1 | subdomain) + (1 | gameID) )
+m3 = lmer(data = df_trial, what_word_sum ~ domain*trial_num + (1 | subdomain) + (1 | gameID) )
+anova(m1,m2,m3)
+summary(m3)
+```

@@ -1,0 +1,6 @@
+[submodule "experiments/static/js/towers/building_widget"]
+	path = experiments/static/js/towers/building_widget
+	url = https://github.com/cogtoolslab/building_widget.git
+[submodule "stimuli/towers/block_utils"]
+	path = stimuli/towers/block_utils
+	url = https://github.com/cogtoolslab/block_utils.git

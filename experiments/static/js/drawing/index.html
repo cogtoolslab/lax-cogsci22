@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://unpkg.com/konva@8/konva.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
+
+    <script src="drawing_app.js"></script>
+</head>
+
+<body>
+    <div id="konva-holder"></div>
+    <!-- add a radio button with option: select, point, line, and arc-->
+    <div id="mode-select">
+        <input type="radio" name="mode" value="select" checked>select
+        <input type="radio" name="mode" value="line">line
+        <input type="radio" name="mode" value="square">rectangle
+        <input type="radio" name="mode" value="circle">circle
+        <input type="radio" name="mode" value="hexagon">hexagon
+        <input type="radio" name="mode" value="octagon">octagon
+    </div>
+
+</body>
+
+</html>

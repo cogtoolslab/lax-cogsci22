@@ -1,7 +1,6 @@
 ## ignoring by default
 .DS_Store
 .ipynb_checkpoints/
-*.csv
 *.json
 *.pdf
 *.png
@@ -25,6 +24,7 @@
 *.key
 *.h5
 *.npy
+results/excluded_workers.txt
 auth.json
 auth.txt
 node_modules/
@@ -55,7 +55,6 @@ __pycache__/
 
 .DS_Store
 *.csv
-*.json
 *.pdf
 *.png
 *.jpeg
@@ -76,7 +75,6 @@ dist/
 downloads/
 eggs/
 .eggs/
-lib/
 lib64/
 parts/
 sdist/
