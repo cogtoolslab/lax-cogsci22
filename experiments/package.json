@@ -1,0 +1,34 @@
+{
+  "name": "lax",
+  "version": "1.0.0",
+  "description": "Language abstraction experiments",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cogtoolslab/lax.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cogtoolslab/lax/issues"
+  },
+  "homepage": "https://github.com/cogtoolslab/lax#readme",
+  "dependencies": {
+    "colors": "^1.4.0",
+    "express": "^4.17.1",
+    "https": "^1.0.0",
+    "lodash": "^4.17.21",
+    "minimist": "^1.2.5",
+    "mongodb": "^3.6.9",
+    "request": "^2.88.2",
+    "socket.io": "^4.1.2",
+    "xmldom": "^0.6.0",
+    "xmlhttprequest": "^1.8.0"
+  },
+  "devDependencies": {
+    "prettier": "2.3.2"
+  }
+}
