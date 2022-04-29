@@ -1,0 +1,94 @@
+{
+  "config_name": "lax-structures-bridge-corpus-procedural-familiarization",
+  "metadata": {
+    "human_readable": "Corpus collection. Language production priors on randomized batches of the data."
+  },
+  "domain": "structures",
+  "subdomain": "bridge",
+  "dbname": "lax",
+  "colname": "lax_structures_corpus",
+  "experiment_type": "corpus",
+  "stimColName": "lax_structures_bridge_all",
+  "iteration_name": "corpus_dev",
+  "completion_code": "34F1D798",
+  "experiment_parameters": {
+    "conditions": ["all"],
+    "stimuli_batch_size": "all",
+    "stimuli_shuffle_seed": 0,
+    "s3_bucket": "lax-structures-bridge-all",
+    "s3_stimuli_path_format": "lax-structures-bridge",
+    "s3_stimuli_path_suffix": "all",
+    "stimFileExt": "png",
+    "s3_bucket_total_stimuli": 250
+  },
+  "experiment_trial_parameters": [
+    {
+      "type": "instructions",
+      "pages": [
+        "<p>Welcome! In this experiment, you will describe some pictures of objects.</p></br><p>This experiment should take a total of <strong>40 minutes</strong>, including the time it takes to read these instructions. You will receive $10 for completing this study (approx. $15/hr).</p></br> <p>When you are finished, the study will be automatically submitted to be reviewed for approval. You can only perform this study one time. We take your compensation and time seriously! Please message us if you run into any problems while completing this study, or if it takes much more time than expected.</p></br><p>Note: we recommend using Chrome, and putting your browser in full screen. This study has not been tested in other browsers.</p>",
+        "<p>Imagine you are an architect. Your boss has created some models for a new series of structures! They won't allow the models to leave the boardroom, but have asked you to write instructions describing each model so that anyone could recreate them from scratch. Your goal is to <strong>describe exactly what needs to be placed where, step by step, to accurately recreate each model.</strong></p></br>",
+        "<p>To do this, you'll type instructions into our special interface. You can type an instruction step into the 'what' and 'where' boxes. You can add instructions steps by clicking the <strong>add instruction steps</strong> button or by hitting the <strong>return key</strong>, as well as remove instruction steps if you accidentally add too many.</p></br><p>When you are done with your instructions, click <strong>SUBMIT INSTRUCTIONS</strong> to move onto the next structure. Your instructions do not need to be perfect, but please try your best! </p></br><img src='../img/lax_corpus_structures_instructions.png' style='max-width: 100%'></br><p> Click 'Next' to practice with the interface.</p>"
+      ]
+    },
+    {
+      "type": "stimuli-contextual-language-production",
+      "firstRowPrompt": "First I would place ",
+      "additionalRowPrompt": "then I would place ",
+      "labelPrompts": ["what", "where"],
+      "label_prompt": "How would you create this image?",
+      "demo": true,
+      "stimuli": {
+        "all": "all"
+      }
+    },
+    {
+      "type": "instructions",
+      "pages": [
+        "<p>Great! To give you an idea of what these structures look like, we'll show you 25 examples that are representative of the kinds of structures the company has made in the past.</p></br><p>Please take a moment to inspect each structure and imagine what instructions you would give to recreate it exactly. When you are ready to proceed to the next structure, either click 'Continue' or hit the RIGHT ARROW key.</p>"
+      ]
+    },
+    {
+      "type": "category-familiarization",
+      "label_prompt": "Example structures. Press the right arrow to reveal the image under the green square.",
+      "requireClickThrough": true,
+      "useRandomStimuli": true,
+      "nStimuli": 25,
+      "stimuli": {
+        "all": "all"
+      }
+    },
+    {
+    "type": "instructions",
+    "pages": [
+      "<p>Now that you have a better idea of what these structures look like in general, we'll show you the actual 25 structures that you will be providing instructions for.</p></br><p>Some of them might be very similar, so please <strong>inspect each one carefully</strong> to familiarize yourself with the details that distinguish each structure from the others!</p></br><p>Once you click 'Next', you won’t be able to see all of the images at once. However, we will show you a few of the images that are next in line so you know what’s coming up, and how many you have left.</p></br><p>Click 'Next' to begin!</p>"
+    ]
+   },
+   {
+     "type": "category-familiarization",
+     "label_prompt": "When you're ready, click the continue button or the right arrow to begin labeling",
+     "requireClickThrough": false,
+     "useRandomStimuli": false,
+     "nStimuli": 25,
+     "stimuli": {
+       "all": "all"
+     }
+   },
+   {
+    "type": "instructions",
+    "pages": [
+      "<p>Great, that's all you need to know! Click 'Next' to start writing your instructions.</p>"
+    ]
+   },
+    {
+      "type": "stimuli-contextual-language-production",
+      "firstRowPrompt": "First I would place ",
+      "additionalRowPrompt": "then I would place ",
+      "labelPrompts": ["what", "where"],
+      "label_prompt": "How would you create this image?",
+      "stimuli": {
+        "all": "all"
+      }
+    }
+  ],
+  "development_flags": {}
+}

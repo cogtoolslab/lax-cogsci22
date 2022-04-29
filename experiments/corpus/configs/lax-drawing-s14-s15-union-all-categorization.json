@@ -1,0 +1,37 @@
+{
+  "config_name": "lax-drawing-s14-s15-union-all-categorization",
+  "metadata": {
+    "human_readable": "Prior elicitation. Language production priors on randomized batches of the data. Categorization framing."
+  },
+  "dbname": "lax",
+  "colname": "prior-elicitation_lax-drawing-s14-s15-union-all-categorization",
+  "domain": "drawing",
+  "experiment_type": "prior_elicitation",
+  "experiment_parameters": {
+    "conditions": ["all"],
+    "stimuli_batch_size": 10,
+    "stimuli_shuffle_seed": 0,
+    "s3_bucket": "lax-drawing-s14-s15-union-all",
+    "s3_stimuli_path_format": "lax-drawing-s14-s15-union-all-000.png",
+    "s3_bucket_total_stimuli": 296
+  },
+  "experiment_trial_parameters": [
+    {
+      "type": "instructions",
+      "pages": [
+        "<p>Welcome to this experiment. This experiment should take a total of <strong>15 minutes</strong>. </br></br> You will be compensated at a base rate of $15/hour for a total of $3.75, which you will receive as long as you complete the study.</p>",
+        "We take your compensation and time seriously! The main experimenter's email for this experiment is <a href='mailto:catwong@mit.edu'>catwong@mit.edu</a>. </br></br> Please write this down now, and email us with your Prolific ID and the subject line <i>Human experiment compensation for language experiment</i> if you have problems submitting this task, or if it takes much more time than expected.",
+        "<p>In this experiment, you will see one picture on the screen at a time, along with a text box.</p></br><p>Your task is to <strong>tell us what each picture looks like to you.</strong></p></br><p>You can write as much or as little as you think is necessary for each picture.</p>",
+        "<p>You will see a total of 10 pictures during the experiment. Click next to begin the experiment.</p>"
+      ]
+    },
+    {
+      "type": "stimuli-language-production",
+      "label_prompt": "This image looks like...",
+      "stimuli": {
+        "all": "all"
+      }
+    }
+  ],
+  "development_flags": {}
+}

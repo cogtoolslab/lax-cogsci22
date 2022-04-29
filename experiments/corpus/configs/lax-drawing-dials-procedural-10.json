@@ -1,0 +1,80 @@
+{
+  "config_name": "lax-drawing-dials-corpus-procedural-10",
+  "metadata": {
+    "human_readable": "Corpus collection. Language production priors on randomized batches of the data."
+  },
+  "domain": "drawing",
+  "subdomain": "dials",
+  "dbname": "lax",
+  "colname": "lax_drawing_corpus",
+  "experiment_type": "corpus",
+  "stimColName": "lax_drawing_dials_10_top_up",
+  "iteration_name": "corpus_prolific_test_3",
+  "completion_code": "34F1D798",
+  "experiment_parameters": {
+    "conditions": ["all"],
+    "stimuli_batch_size": "all",
+    "stimuli_shuffle_seed": 0,
+    "s3_bucket": "lax-drawing-dials-all",
+    "s3_stimuli_path_format": "lax-drawing-dials",
+    "s3_stimuli_path_suffix": "all",
+    "stimFileExt": "png",
+    "s3_bucket_total_stimuli": 250
+  },
+  "experiment_trial_parameters": [
+    {
+      "type": "instructions",
+      "pages": [
+        "<p>Welcome! In this experiment, you will describe some pictures of objects.</p></br><p>This experiment should take a total of <strong>25 minutes</strong>, including the time it takes to read these instructions. You will receive $6.25 for completing this study (approx. $15/hr).</p></br> <p>When you are finished, the study will be automatically submitted to be reviewed for approval. You can only perform this study one time. We take your compensation and time seriously! Please message us if you run into any problems while completing this study, or if it takes much more time than expected.</p></br><p>Note: we recommend using Chrome, and putting your browser in full screen. This study has not been tested in other browsers.</p>",
+        "<p>Imagine you are an engineer. Your boss has created some drawings for a new line of gadgets! They won't allow the drawings to leave the boardroom, but have asked you to write instructions describing each drawing so that anyone could recreate them from scratch. Your goal is to <strong>describe exactly what needs to be drawn where, step by step, to accurately recreate each drawing.</strong></p></br>",
+        "<p>To do this, you'll type instructions into our special interface. You can type an instruction step into the 'what' and 'where' boxes. You can add instructions steps by clicking the <strong>add instruction steps</strong> button or by hitting the <strong>return key</strong>, as well as remove instruction steps if you accidentally add too many.</p></br><p>When you are done with your instructions, click <strong>SUBMIT INSTRUCTIONS</strong> to move onto the next gadget. Your instructions do not need to be perfect, but please try your best! </p></br><img src='../img/lax_corpus_drawing_instructions.png' style='max-width: 100%'></br><p> Click 'Next' to practice with the interface.</p>"
+      ]
+    },
+    {
+      "type": "stimuli-contextual-language-production",
+      "firstRowPrompt": "First I would draw ",
+      "additionalRowPrompt": "then I would draw ",
+      "labelPrompts": ["what", "where"],
+      "label_prompt": "How would you create this image?",
+      "demo": true,
+      "stimuli": {
+        "all": "all"
+      },
+      "maxRows": 500
+    },
+    {
+      "type": "instructions",
+      "pages": [
+        "<p>Great! To give you an idea of what these drawings look like, we'll show you 25 examples that are representative of the kinds of gadgets the company has made in the past.</p></br><p>Please take a moment to look at each drawing and imagine what instructions you would give to recreate it exactly. Some of them might be very similar, so please <strong>inspect each one carefully</strong> to familiarize yourself with the details that distinguish each gadget from the others!</p><p>When you are ready to proceed to the next drawing, either click 'Continue' or hit the RIGHT ARROW key.</p>"
+      ]
+    },
+    {
+      "type": "category-familiarization",
+      "label_prompt": "Example drawing. Press the right arrow to reveal the image under the green square.",
+      "requireClickThrough": true,
+      "useRandomStimuli": true,
+      "nStimuli": 25,
+      "stimuli": {
+        "all": "all"
+      }
+    },
+   {
+    "type": "instructions",
+    "pages": [
+      "<p>Great, that's all you need to know! Click 'Next' to start writing your instructions.</p>"
+    ]
+   },
+    {
+      "type": "stimuli-contextual-language-production",
+      "firstRowPrompt": "First I would draw ",
+      "additionalRowPrompt": "then I would draw ",
+      "labelPrompts": ["what", "where"],
+      "label_prompt": "How would you create this image?",
+      "stimuli": {
+        "all": "all"
+      },
+      "maxRows": 500
+    }
+  ],
+  "development_flags": {}
+}

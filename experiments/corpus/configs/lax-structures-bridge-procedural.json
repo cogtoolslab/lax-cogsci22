@@ -1,0 +1,45 @@
+{
+  "config_name": "lax-structures-bridge-corpus-procedural",
+  "metadata": {
+    "human_readable": "Corpus collection for 2-block, 4-block, 8-block towers. Language production priors on batches of the data."
+  },
+  "domain": "structures",
+  "subdomain": "bridge",
+  "dbname": "lax",
+  "colname": "lax_structures_corpus",
+  "experiment_type": "corpus",
+  "stimColName": "lax_structures_bridge_all",
+  "iteration_name": "corpus_dev",
+  "completion_code": "XXXXXX",
+  "experiment_parameters": {
+    "conditions": ["all"],
+    "stimuli_batch_size": "all",
+    "stimuli_shuffle_seed": 0,
+    "s3_bucket": "lax-structures-bridge-all",
+    "s3_stimuli_path_format": "lax-structures-bridge",
+    "s3_stimuli_path_suffix": "all",
+    "stimFileExt": "png",
+    "s3_bucket_total_stimuli": 250
+  },
+  "experiment_trial_parameters": [
+    {
+      "type": "instructions",
+      "pages": [
+        "<p>Welcome to this experiment. This experiment should take a total of <strong>30 minutes</strong>. </br></br> You will be compensated at a base rate of $15/hour for a total of $7.50, which you will receive as long as you complete the study.</p>",
+        "We take your compensation and time seriously! The main experimenter's email for this experiment is <a href='mailto:cogtoolslab.requester@gmail.com'>cogtoolslab.requester@gmail.com</a>. </br></br> Please write this down now, and email us with your Prolific ID and the subject line <i>Compensation for language experiment</i> if you have problems submitting this task, or if it takes much more time than expected.",
+        "<p>After a brief familiarization phase, you will be labeling a total of 25 images during the experiment. Click next to begin the experiment.</p>"
+      ]
+    },
+    {
+      "type": "stimuli-contextual-language-production",
+      "firstRowPrompt": "First I would place ",
+      "additionalRowPrompt": "then I would place ",
+      "labelPrompts": ["what", "where"],
+      "label_prompt": "How would you create this image?",
+      "stimuli": {
+        "all": "all"
+      }
+    }
+  ],
+  "development_flags": {}
+}

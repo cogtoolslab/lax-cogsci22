@@ -1,0 +1,41 @@
+{
+  "config_name": "lax-tower-corpus-categorization",
+  "metadata": {
+    "human_readable": "Corpus collection for 2-block, 4-block, 8-block towers. Language production priors on batches of the data."
+  },
+  "domain": "towers",
+  "dbname": "lax",
+  "colname": "lax_drawing_corpus",
+  "stimColName": "ca_prior_elicitation_4_block_unique_silhouettes_categorization",
+  "stimFileExt": "png",
+  "experiment_type": "prior_elicitation",
+  "iteration_name": "corpus_dev",
+  "completion_code": "38C609EF",
+  "experiment_parameters": {
+    "conditions": ["all"],
+    "stimuli_batch_size": "all",
+    "stimuli_shuffle_seed": 0,
+    "s3_bucket": "lax-tower-4-block-unique-silhouettes-json",
+    "s3_stimuli_path_format": "tower_4_block_unique_silhouettes",
+    "s3_bucket_total_stimuli": 129
+  },
+  "experiment_trial_parameters": [
+    {
+      "type": "instructions",
+      "pages": [
+        "<p>Welcome to this experiment. This experiment should take a total of <strong>15 minutes</strong>. </br></br> You will be compensated at a base rate of $15/hour for a total of $3.75, which you will receive as long as you complete the study.</p>",
+        "We take your compensation and time seriously! The main experimenter's email for this experiment is <a href='mailto:cogtoolslab.requester@gmail.com'>cogtoolslab.requester@gmail.com</a>. </br></br> Please write this down now, and email us with your Prolific ID and the subject line <i>Compensation for language experiment</i> if you have problems submitting this task, or if it takes much more time than expected.",
+        "<p>In this experiment, you will see images of towers made from blocks, similar to these:</p></br><img src='../../../towers_prior_elicitation/3_block_examples.png' alt='example towers'><p>Your task is to <strong>write a short description of each tower.</strong></p></br><p>You should imagine you are writing a phrase, that would help you identify it later on based on your description alone.</br>",
+        "<p>You will see a total of 13 images during the experiment. Click next to begin the experiment.</p>"
+      ]
+    },
+    {
+      "type": "stimuli-language-production",
+      "label_prompt": "This image looks like...",
+      "stimuli": {
+        "all": "all"
+      }
+    }
+  ],
+  "development_flags": {}
+}
