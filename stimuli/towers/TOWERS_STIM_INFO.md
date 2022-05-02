@@ -1,1 +1,0 @@
-Stimulus design was started in the cogtoolslab/compositional-abstractions repo.

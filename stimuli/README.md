@@ -1,1 +1,3 @@
-Directory to contain stimulus preprocessing code for this project.
+Stimulus generation and preprocessing.
+
+Tower stimuli are generated in towers/structure_generator.ipynb
