@@ -1,7 +1,7 @@
 ## LAX (Language and Abstraction Experiments): Identifying concept libraries from language about object structure, CogSci 2022
 This repository contains experimental code, analysis scripts, and data for the Language and Abstraction Experiments presented at CogSci 2022.
 
-
+<img width="904" alt="CleanShot 2022-05-03 at 17 19 13@2x" src="https://user-images.githubusercontent.com/5262024/166568205-ed44a9fd-f867-41b2-ada2-f49b99f6a058.png">
 
 It contains the following key subdirectories:
 - `analysis`: This contains Jupyter notebooks containing analysis of the human experiments. These are annotated with visualizer links for viewing the notebook HTMLs directly from the browser.
