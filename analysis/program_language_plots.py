@@ -13,6 +13,7 @@ from collections import defaultdict
 import csv, os, json, argparse
 from email.policy import default
 import itertools
+import pathlib
 from re import L
 from cycler import cycler
 
@@ -241,6 +242,11 @@ parser.add_argument(
     action="store_true",
     help="If included, uses a bitext for the base DSL.",
 )
+parser.add_argument(
+    "--generate_program_length_plots",
+    action="store_true",
+    help="If included, also generate plots for the program length.",
+)
 
 
 def get_domain_color(palette, args):
@@ -397,6 +403,7 @@ def generate_program_length_plots(args, summaries_dict, libraries_dict, bitexts_
 
     output_plot = f"{args.task_summaries}_{args.program_column[-1]}_{args.language_column}_lengths.png"
     output = os.path.join(args.export_dir, output_plot)
+    pathlib.Path(args.export_dir).mkdir(parents=True, exist_ok=True)
     # plt.title(f"{get_subdomain_name(args.task_summaries)}")
     # plt.xlabel("log(|DSL|)")
     # plt.ylabel("log(|Program|)")
@@ -571,8 +578,9 @@ def generate_combined_likelihood_plots(
         ticker.FuncFormatter(lambda x, pos: "{:,.1f}".format(x))
     )
 
-    output_plot = f"library_vocab_alignment_pdf/{args.task_summaries}_{args.program_column[-1]}_{args.language_column}_combined.pdf"
+    output_plot = f"{args.task_summaries}_{args.program_column[-1]}_{args.language_column}_combined.pdf"
     output = os.path.join(args.export_dir, output_plot)
+    pathlib.Path(args.export_dir).mkdir(parents=True, exist_ok=True)
     # plt.title(f"{get_subdomain_name(args.task_summaries)}")
     # plt.xlabel("log(|DSL|)")
     # plt.ylabel("log(|Program|)")
@@ -662,7 +670,7 @@ def generate_program_likelihood_plots(
     # plt.ylabel("P(language | program, T, DSL)")
     # plt.xlabel("log(|DSL|)")
 
-    fig.savefig(output)
+    # fig.savefig(output)
     print(f"...saved lengths plot to {output}.")
 
     # Now, run a nested linear model to determine that there is a non-linear mean in each.
@@ -695,7 +703,10 @@ def main(args):
     libraries_dict = get_libraries_dict(args, bitexts_dict)
     translations_dict = get_translations(args)
 
-    generate_program_length_plots(args, summaries_dict, libraries_dict, bitexts_dict)
+    if args.generate_program_length_plots:
+        generate_program_length_plots(
+            args, summaries_dict, libraries_dict, bitexts_dict
+        )
     generate_program_likelihood_plots(
         args, summaries_dict, libraries_dict, translations_dict, bitexts_dict
     )
