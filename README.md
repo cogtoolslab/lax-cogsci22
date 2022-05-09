@@ -3,6 +3,8 @@ This repository contains experimental code, analysis scripts, and data for the L
 
 
 
+******
+
 It contains the following key subdirectories:
 - `analysis`: This contains Jupyter notebooks containing analysis of the human experiments. These are annotated with visualizer links for viewing the notebook HTMLs directly from the browser.
 - `experiments`: This contains the human experiment code. See below (human experiments) for details on developing and running experiments.
