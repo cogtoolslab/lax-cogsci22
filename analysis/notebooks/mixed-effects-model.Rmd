@@ -16,7 +16,6 @@ library(ggthemes)
 
 1. Pull out relevant columns
 2. z-score word counts within participant
-3. 
 
 ```{r}
 d.raw <- read_csv('../results/csv/lax_corpus_1k_trials_program_length.csv') %>%
@@ -74,57 +73,21 @@ d %>%
 ggsave('./corpus/language_program_lengths.pdf')
 ```
 
-# Run one 'omnibus' lmer model to rule them all
+# people use more complex words for complex objects, lmer model comparison
 
 ```{r}
-m_all1 <- lmer(what_word_sum ~ subdomain + dsl_numeric * poly(program_length, 1) 
-                               + (1 | gameID),
+m_all1 <- lmer(what_word_sum ~ subdomain + poly(program_length, 1) 
+                              + (1 + poly(program_length, 1) || gameID),
                contrasts = list(subdomain = contr.sum(8)),
-               data = d.raw)
-summary(m_all1)
+               data = d.raw %>% filter(dsl=='dsl_0_base'))
 ```
 
 ```{r}
-m_all2 <- lmer(what_word_sum ~ subdomain + poly(base_program_length, 2) 
-                              + (1 + poly(base_program_length, 2) || gameID),
+m_all2 <- lmer(what_word_sum ~ subdomain + poly(program_length, 2) 
+                              + (1 + poly(program_length, 2) || gameID),
                contrasts = list(subdomain = contr.sum(8)),
-               data = d.raw)
+               data = d.raw %>% filter(dsl=='dsl_0_base'))
 
 anova(m_all1, m_all2)
 summary(m_all2)
-```
-
-```{r}
-m_drawing1 <- d %>%
-  filter(domain == 'drawing') %>%
-  lmer(what_word_sum ~ subdomain * poly(base_program_length, 1) 
-           + (1 | gameID) ,
-       data = .)
-summary(m_drawing1)
-
-m_drawing2 <- d %>%
-  filter(domain == 'drawing') %>%
-  lmer(what_word_sum ~ subdomain * poly(base_program_length, 2) 
-           + (1 | gameID),
-       data = .)
-
-anova(m_drawing1, m_drawing2)
-```
-
-```{r}
-m_structures1 <- d %>%
-  filter(subdomain == 'bridge') %>%
-  lmer(what_word_sum ~ poly(base_program_length, 1) 
-           + (1 | gameID) ,
-#           + (1 | subdomain),
-       data = .)
-
-m_structures2 <- d %>%
-  filter(subdomain == 'bridge') %>%
-  lmer(what_word_sum ~ poly(base_program_length, 2) 
-           + (1 | gameID) ,
-           #+ (1 | subdomain),
-       data = .)
-
-anova(m_structures1, m_structures2)
 ```
